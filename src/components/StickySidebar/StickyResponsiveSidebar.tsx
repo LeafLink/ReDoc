@@ -40,7 +40,7 @@ const StyledStickySidebar = styled.div<{ open?: boolean }>`
     position: fixed;
     z-index: 20;
     width: 100%;
-    background: #ffffff;
+    background: ${props => props.theme.menu.backgroundColor};
     display: ${props => (props.open ? 'flex' : 'none')};
   `};
 
@@ -52,8 +52,8 @@ const StyledStickySidebar = styled.div<{ open?: boolean }>`
 const FloatingButton = styled.div`
   outline: none;
   user-select: none;
-  background-color: #f2f2f2;
-  color: ${props => props.theme.colors.primary.main};
+  background-color: ${props => props.theme.menu.floatingButton.backgroundColor};
+  color: ${props => props.theme.menu.floatingButton.color};
   display: none;
   cursor: pointer;
   position: fixed;

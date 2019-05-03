@@ -126,7 +126,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   }),
 }))<MenuItemLabelType>`
   cursor: pointer;
-  color: ${props => (props.active ? props.theme.colors.primary.main : props.theme.menu.textColor)};
+  color: ${props => (props.active ? props.theme.colors.text.active : props.theme.menu.textColor)};
   margin: 0;
   padding: 12.5px ${props => props.theme.spacing.unit * 4}px;
   ${({ depth, type, theme }) =>
@@ -135,12 +135,13 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   justify-content: space-between;
   font-family: ${props => props.theme.typography.headings.fontFamily};
   ${props => menuItemDepth[props.depth]};
-  background-color: ${props => (props.active ? menuItemActiveBg(props.depth, props) : '')};
+  background-color: ${props => (props.active ? props.theme.menu.activeBackgroundColor : '')};
 
   ${props => (props.deprecated && deprecatedCss) || ''};
 
   &:hover {
-    background-color: ${props => menuItemActiveBg(props.depth, props)};
+    background-color: ${props => props.theme.menu.activeBackgroundColor};
+    color: ${props => props.theme.colors.text.active};
   }
 
   ${ShelfIcon} {

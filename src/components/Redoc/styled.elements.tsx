@@ -10,6 +10,7 @@ export const RedocWrap = styled.div`
   display: flex;
   position: relative;
   text-align: left;
+  background-color: ${theme.middlePanel.backgroundColor};
 
   -webkit-font-smoothing: ${theme.typography.smoothing};
   font-smoothing: ${theme.typography.smoothing};

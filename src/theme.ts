@@ -14,7 +14,7 @@ const defaultTheme: ThemeInterface = {
   colors: {
     tonalOffset: 0.3,
     primary: {
-      main: '#32329f',
+      main: '#676A6C',
       light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       contrastText: ({ colors }) => readableColor(colors.primary.main),
@@ -38,8 +38,10 @@ const defaultTheme: ThemeInterface = {
       contrastText: ({ colors }) => readableColor(colors.error.main),
     },
     text: {
-      primary: '#333333',
+      primary: '#262626',
       secondary: ({ colors }) => lighten(colors.tonalOffset, colors.text.primary),
+      link: '#0072F0',
+      active: '#01bbb4'
     },
     border: {
       dark: 'rgba(0,0,0, 0.1)',
@@ -87,7 +89,7 @@ const defaultTheme: ThemeInterface = {
     requireLabelColor: theme => theme.colors.error.main,
     labelsTextSize: '0.9em',
     nestingSpacing: '1em',
-    nestedBackground: '#fafafa',
+    nestedBackground: '#1b1443',
     arrow: {
       size: '1.1em',
       color: theme => theme.colors.text.secondary,
@@ -103,7 +105,7 @@ const defaultTheme: ThemeInterface = {
     smoothing: 'antialiased',
     optimizeSpeed: true,
     headings: {
-      fontFamily: 'Montserrat, sans-serif',
+      fontFamily: 'Sofia Pro, Montserrat, sans-serif',
       fontWeight: '400',
       lineHeight: '1.6em',
     },
@@ -117,15 +119,17 @@ const defaultTheme: ThemeInterface = {
       wrap: false,
     },
     links: {
-      color: ({ colors }) => colors.primary.main,
+      color: ({ colors }) => colors.text.link,
+      decoration: 'underline',
       visited: ({ typography }) => typography.links.color,
       hover: ({ typography }) => lighten(0.2, typography.links.color),
     },
   },
   menu: {
     width: '260px',
-    backgroundColor: '#fafafa',
-    textColor: '#333333',
+    backgroundColor: '#1b1443',
+    activeBackgroundColor: '#263256',
+    textColor: '#c5c9d4',
     groupItems: {
       textTransform: 'uppercase',
     },
@@ -136,14 +140,21 @@ const defaultTheme: ThemeInterface = {
       size: '1.5em',
       color: theme => theme.menu.textColor,
     },
+    floatingButton: {
+        backgroundColor: '#0072F0',
+        color: '#EEF2F4'
+    }
   },
   logo: {
     maxHeight: ({ menu }) => menu.width,
     maxWidth: ({ menu }) => menu.width,
-    gutter: '2px',
+    gutter: '15px',
+  },
+  middlePanel: {
+    backgroundColor: '#EEF2F4'
   },
   rightPanel: {
-    backgroundColor: '#263238',
+    backgroundColor: '#1B1443',
     width: '40%',
     textColor: '#ffffff',
   },
@@ -232,6 +243,8 @@ export interface ResolvedThemeInterface {
     text: {
       primary: string;
       secondary: string;
+      link: string;
+      active: string;
     };
     responses: {
       success: HTTPResponseColos;
@@ -290,11 +303,13 @@ export interface ResolvedThemeInterface {
       color: string;
       visited: string;
       hover: string;
+      decoration: string;
     };
   };
   menu: {
     width: string;
     backgroundColor: string;
+    activeBackgroundColor: string;
     textColor: string;
     groupItems: {
       textTransform: string;
@@ -306,11 +321,18 @@ export interface ResolvedThemeInterface {
       size: string;
       color: string;
     };
+    floatingButton: {
+        backgroundColor: string;
+        color: string;
+    };
   };
   logo: {
     maxHeight: string;
     maxWidth: string;
     gutter: string;
+  };
+  middlePanel: {
+    backgroundColor: string;
   };
   rightPanel: {
     backgroundColor: string;

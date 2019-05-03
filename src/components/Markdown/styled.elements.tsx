@@ -15,6 +15,7 @@ export const linksCss = css`
 
     &:hover {
       color: ${props => props.theme.typography.links.hover};
+      text-decoration: ${props => props.theme.typography.links.decoration};
     }
   }
 `;
@@ -140,10 +141,6 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   table tr {
     background-color: #fff;
     border-top: 1px solid #ccc;
-
-    &:nth-child(2n) {
-      background-color: ${({ theme }) => theme.schema.nestedBackground};
-    }
   }
 
   table th,

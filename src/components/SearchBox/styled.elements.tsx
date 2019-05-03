@@ -52,11 +52,10 @@ export const SearchIcon = styled((props: { className?: string }) => (
 
 export const SearchResultsBox = styled.div`
   padding: ${props => props.theme.spacing.unit}px 0;
-  background-color: #ededed;
+  background-color: ${props => props.theme.menu.backgroundColor};
   min-height: 150px;
   max-height: 250px;
-  border-top: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 1px solid ${props => props.theme.menu.activeBackgroundColor};
   margin-top: 10px;
   line-height: 1.4;
   font-size: 0.9em;
@@ -66,7 +65,7 @@ export const SearchResultsBox = styled.div`
     padding-bottom: 6px;
 
     &:hover {
-      background-color: #e1e1e1;
+      background-color: ${props => props.theme.menu.activeBackgroundColor}
     }
 
     > svg {
@@ -74,7 +73,7 @@ export const SearchResultsBox = styled.div`
     }
 
     &.active {
-      background-color: #e1e1e1;
+      background-color: ${props => props.theme.menu.activeBackgroundColor};
     }
   }
 `;
