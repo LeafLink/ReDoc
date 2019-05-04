@@ -1,5 +1,92 @@
 import { darken, desaturate, lighten, readableColor, transparentize } from 'polished';
 
+const allFonts: Fonts = {
+  monospace: 'Courier, monospace',
+  display: 'Sofia Pro, Montserrat, sans-serif',
+  text: 'Roboto, sans-serif'
+};
+
+const allColors: Colors = {
+  leaflink: {
+    brand: {
+      primary: {
+        grandDaddyPurp: '#1B1443',
+        blueDream: '#0072F0',
+        sourDiesel: '#01BBB4',
+        panamaRed: '#ED5565'
+      },
+      secondary: {
+        lemonHaze: '#FCE143',
+        bubbaKush: '#0022AC',
+        jillyBean: '#1CE0AD',
+        tangerineDream: '#F8AC59'
+      },
+      greyScale: {
+        godfatherOg: '#262626',
+        darkGrey: '#676A6C',
+        lightGrey: '#C5C9D4',
+        backgroundGrey: '#EEF2F4'
+      }
+    },
+    elements: {
+      blue: {
+        main: '',
+        dark: '#263256',
+        light: '',
+        contrastText: ''
+      }
+    }
+  },
+  redoc: {
+    grey: {
+      main: '#999999',
+      light: '#f4f4f4',
+      dark: '#676A6C',
+      contrastText: ''
+    },
+    green: {
+      main: '#00aa13',
+      light: '#d6eadd',
+      dark: '',
+      contrastText: ''
+    },
+    yellow: {
+      main: '#d4ad03',
+      light: '#d3ca12',
+      dark: '',
+      contrastText: ''
+    },
+    red: {
+      main: '#e53935',
+      light: '#eedfe0',
+      dark: '',
+      contrastText: ''
+    },
+    orange: {
+      main: '#ffa500',
+      light: '',
+      dark: '',
+      contrastText: ''
+    },
+    blue: {
+      main: '',
+      light: '#87ceeb',
+      dark: '',
+      contrastText: ''
+    },
+    purple: {
+      main: '#9b708b',
+      light: '#c167e4',
+      dark: '',
+      contrastText: ''
+    }
+  },
+
+  white: '#ffffff',
+  black: '',
+  transparent: 'rgba(0,0,0, 0.1)'
+};
+
 const defaultTheme: ThemeInterface = {
   spacing: {
     unit: 5,
@@ -14,67 +101,67 @@ const defaultTheme: ThemeInterface = {
   colors: {
     tonalOffset: 0.3,
     primary: {
-      main: '#676A6C',
+      main: allColors.redoc.grey.dark,
       light: ({ colors }) => lighten(colors.tonalOffset, colors.primary.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.primary.main),
       contrastText: ({ colors }) => readableColor(colors.primary.main),
     },
     success: {
-      main: '#00aa13',
+      main: allColors.redoc.green.main,
       light: ({ colors }) => lighten(colors.tonalOffset, colors.success.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.success.main),
       contrastText: ({ colors }) => readableColor(colors.success.main),
     },
     warning: {
-      main: '#d4ad03',
+      main: allColors.redoc.yellow.main,
       light: ({ colors }) => lighten(colors.tonalOffset, colors.warning.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.warning.main),
-      contrastText: '#ffffff',
+      contrastText: allColors.white,
     },
     error: {
-      main: '#e53935',
+      main: allColors.redoc.red.main,
       light: ({ colors }) => lighten(colors.tonalOffset, colors.error.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.error.main),
       contrastText: ({ colors }) => readableColor(colors.error.main),
     },
     text: {
-      primary: '#262626',
+      primary: allColors.redoc.grey.dark,
       secondary: ({ colors }) => lighten(colors.tonalOffset, colors.text.primary),
-      link: '#0072F0',
-      active: '#01bbb4'
+      link: allColors.leaflink.brand.primary.blueDream,
+      active: allColors.leaflink.brand.primary.sourDiesel
     },
     border: {
-      dark: 'rgba(0,0,0, 0.1)',
-      light: '#ffffff',
+      dark: allColors.transparent,
+      light: allColors.white,
     },
     responses: {
       success: {
         color: ({ colors }) => colors.success.main,
-        backgroundColor: ({ colors }) => transparentize(0.9, colors.success.main),
+        backgroundColor: allColors.redoc.green.light,
       },
       error: {
         color: ({ colors }) => colors.error.main,
-        backgroundColor: ({ colors }) => transparentize(0.9, colors.error.main),
+        backgroundColor: allColors.redoc.red.light,
       },
       redirect: {
-        color: '#ffa500',
+        color: allColors.redoc.orange.main,
         backgroundColor: ({ colors }) => transparentize(0.9, colors.responses.redirect.color),
       },
       info: {
-        color: '#87ceeb',
+        color: allColors.redoc.blue.light,
         backgroundColor: ({ colors }) => transparentize(0.9, colors.responses.info.color),
       },
     },
     http: {
-      get: '#6bbd5b',
-      post: '#248fb2',
-      put: '#9b708b',
-      options: '#d3ca12',
-      patch: '#e09d43',
-      delete: '#e27a7a',
-      basic: '#999',
-      link: '#31bbb6',
-      head: '#c167e4',
+      get: allColors.leaflink.brand.primary.sourDiesel,
+      post: allColors.leaflink.brand.primary.blueDream,
+      put: allColors.redoc.purple.main,
+      options: allColors.redoc.yellow.light,
+      patch: allColors.leaflink.brand.secondary.tangerineDream,
+      delete: allColors.leaflink.brand.primary.panamaRed,
+      basic: allColors.redoc.grey.main,
+      link: allColors.leaflink.brand.primary.sourDiesel,
+      head: allColors.redoc.purple.light,
     },
   },
   schema: {
@@ -89,7 +176,7 @@ const defaultTheme: ThemeInterface = {
     requireLabelColor: theme => theme.colors.error.main,
     labelsTextSize: '0.9em',
     nestingSpacing: '1em',
-    nestedBackground: '#1b1443',
+    nestedBackground: allColors.leaflink.brand.primary.grandDaddyPurp,
     arrow: {
       size: '1.1em',
       color: theme => theme.colors.text.secondary,
@@ -101,22 +188,23 @@ const defaultTheme: ThemeInterface = {
     fontWeightRegular: '400',
     fontWeightBold: '600',
     fontWeightLight: '300',
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: allFonts.text,
     smoothing: 'antialiased',
     optimizeSpeed: true,
     headings: {
-      fontFamily: 'Sofia Pro, Montserrat, sans-serif',
+      fontFamily: allFonts.display,
       fontWeight: '400',
       lineHeight: '1.6em',
     },
     code: {
       fontSize: '13px',
-      fontFamily: 'Courier, monospace',
+      fontFamily: allFonts.monospace,
       lineHeight: ({ typography }) => typography.lineHeight,
       fontWeight: ({ typography }) => typography.fontWeightRegular,
-      color: '#e53935',
-      backgroundColor: 'rgba(38, 50, 56, 0.05)',
+      color: allColors.redoc.red.main,
+      backgroundColor: allColors.redoc.grey.light,
       wrap: false,
+      borderColor: allColors.transparent
     },
     links: {
       color: ({ colors }) => colors.text.link,
@@ -127,9 +215,9 @@ const defaultTheme: ThemeInterface = {
   },
   menu: {
     width: '260px',
-    backgroundColor: '#1b1443',
-    activeBackgroundColor: '#263256',
-    textColor: '#c5c9d4',
+    backgroundColor: allColors.leaflink.brand.primary.grandDaddyPurp,
+    activeBackgroundColor: allColors.leaflink.elements.blue.dark,
+    textColor: allColors.leaflink.brand.greyScale.lightGrey,
     groupItems: {
       textTransform: 'uppercase',
     },
@@ -141,8 +229,8 @@ const defaultTheme: ThemeInterface = {
       color: theme => theme.menu.textColor,
     },
     floatingButton: {
-        backgroundColor: '#0072F0',
-        color: '#EEF2F4'
+        backgroundColor: allColors.leaflink.brand.primary.blueDream,
+        color: allColors.leaflink.brand.greyScale.backgroundGrey
     }
   },
   logo: {
@@ -151,12 +239,16 @@ const defaultTheme: ThemeInterface = {
     gutter: '15px',
   },
   middlePanel: {
-    backgroundColor: '#EEF2F4'
+    backgroundColor: allColors.leaflink.brand.greyScale.backgroundGrey
   },
   rightPanel: {
-    backgroundColor: '#1B1443',
+    backgroundColor: allColors.leaflink.brand.primary.grandDaddyPurp,
     width: '40%',
-    textColor: '#ffffff',
+    textColor: allColors.white,
+  },
+  tab: {
+    activeColor: allColors.leaflink.brand.primary.blueDream,
+    color: allColors.leaflink.brand.greyScale.lightGrey
   },
   codeSample: {
     backgroundColor: ({ rightPanel }) => darken(0.1, rightPanel.backgroundColor),
@@ -198,6 +290,52 @@ export function resolveTheme(theme: ThemeInterface): ResolvedThemeInterface {
   setProxy(theme, '');
   return JSON.parse(JSON.stringify(theme));
 }
+
+export interface Fonts {
+  monospace: string;
+  text: string;
+  display: string;
+};
+
+export interface Colors {
+  leaflink: {
+    brand: {
+      primary: {
+        grandDaddyPurp: string;
+        blueDream: string;
+        sourDiesel: string;
+        panamaRed: string;
+      };
+      secondary: {
+        lemonHaze: string;
+        bubbaKush: string;
+        jillyBean: string;
+        tangerineDream: string;
+      };
+      greyScale: {
+        godfatherOg: string;
+        darkGrey: string;
+        lightGrey: string;
+        backgroundGrey: string;
+      };
+    };
+    elements: {
+      blue: ColorSetting;
+    };
+  };
+  redoc: {
+    grey: ColorSetting;
+    green: ColorSetting;
+    yellow: ColorSetting;
+    red: ColorSetting;
+    orange: ColorSetting;
+    blue: ColorSetting;
+    purple: ColorSetting;
+  };
+  white: string;
+  black: string;
+  transparent: string;
+};
 
 export interface ColorSetting {
   main: string;
@@ -292,6 +430,7 @@ export interface ResolvedThemeInterface {
     code: FontSettings & {
       backgroundColor: string;
       wrap: boolean;
+      borderColor: string;
     };
     headings: {
       fontFamily: string;
@@ -338,6 +477,10 @@ export interface ResolvedThemeInterface {
     backgroundColor: string;
     textColor: string;
     width: string;
+  };
+  tab: {
+    activeColor: string;
+    color: string;
   };
   codeSample: {
     backgroundColor: string;

@@ -10,28 +10,20 @@ export const Tabs = styled(ReactTabs)`
     list-style: none;
     padding: 0;
     margin: 0;
-    margin: 0 -5px;
 
     > li {
-      padding: 5px 10px;
       display: inline-block;
-
-      background-color: ${({ theme }) => darken(0.05, theme.rightPanel.backgroundColor)};
-      border-bottom: 1px solid rgba(0, 0, 0, 0.5);
       cursor: pointer;
       text-align: center;
       outline: none;
-      color: ${({ theme }) => darken(theme.colors.tonalOffset, theme.rightPanel.textColor)};
-      margin: 5px;
-      border: 1px solid ${({ theme }) => darken(0.1, theme.rightPanel.backgroundColor)};
-      border-radius: 5px;
+      color: ${({ theme }) => theme.tab.color};
       min-width: 60px;
       font-size: 0.9em;
       font-weight: bold;
 
       &.react-tabs__tab--selected {
-        color: ${props => props.theme.colors.text.primary};
-        background: ${({ theme }) => theme.rightPanel.textColor};
+        color: ${({ theme }) => theme.tab.activeColor};
+        border-bottom: 2px solid ${({ theme }) => theme.tab.activeColor};
       }
 
       &:only-child {
@@ -41,18 +33,26 @@ export const Tabs = styled(ReactTabs)`
 
       &.tab-success {
         color: ${props => props.theme.colors.responses.success.color};
+        background-color: ${props => props.theme.colors.responses.success.backgroundColor};
+        border: 0px;
       }
 
       &.tab-redirect {
         color: ${props => props.theme.colors.responses.redirect.color};
+        background-color: ${props => props.theme.colors.responses.redirect.backgroundColor};
+        border: 0px;
       }
 
       &.tab-info {
         color: ${props => props.theme.colors.responses.info.color};
+        background-color: ${props => props.theme.colors.responses.info.backgroundColor};
+        border: 0px;
       }
 
       &.tab-error {
         color: ${props => props.theme.colors.responses.error.color};
+        background-color: ${props => props.theme.colors.responses.error.backgroundColor};
+        border: 0px;
       }
     }
   }

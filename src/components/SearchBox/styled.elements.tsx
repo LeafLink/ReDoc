@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { darken } from 'polished';
 import styled from '../../styled-components';
 import { MenuItemLabel } from '../SideMenu/styled.elements';
 
@@ -17,7 +16,7 @@ export const SearchInput = styled.input.attrs(() => ({
   padding: 5px ${props => props.theme.spacing.unit * 2}px 5px
     ${props => props.theme.spacing.unit * 4}px;
   border: 0;
-  border-bottom: 1px solid ${({ theme }) => darken(0.1, theme.menu.backgroundColor)};
+  border-bottom: 1px solid ${({ theme }) => theme.menu.activeBackgroundColor};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: bold;
   font-size: 13px;
